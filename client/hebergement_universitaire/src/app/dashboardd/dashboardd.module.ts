@@ -8,6 +8,8 @@ import { HeaderComponent } from './header/header.component';
 import { AddFoyerComponent } from './add-foyer/add-foyer.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ListeFoyerComponent } from './liste-foyer/liste-foyer.component';
+import { UpdatFoyerComponent } from './updat-foyer/updat-foyer.component';
+import { DetailsFoyerComponent } from './details-foyer/details-foyer.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { ListeFoyerComponent } from './liste-foyer/liste-foyer.component';
     HeaderComponent,
     AddFoyerComponent,
     ListeFoyerComponent,
+    UpdatFoyerComponent,
+    DetailsFoyerComponent,
   ],
   imports: [CommonModule, DashboarddRoutingModule, ReactiveFormsModule],
 })

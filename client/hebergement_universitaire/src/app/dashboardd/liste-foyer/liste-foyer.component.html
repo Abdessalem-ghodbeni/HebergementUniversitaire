@@ -16,9 +16,13 @@
                     <td>{{item.nomFoyer}}</td>
                     <td>{{item.capaciteFoyer}}</td>
                     <td class="custum_action_btn">
-                        <button class="custumer_btn" (click)="supprimerFoyer(item.idFoyer)">
+                        <button class="custumer_btn" (click)="updateFoyer(item.idFoyer)">
                             <i class="uil uil-refresh red-icon"></i> Update</button>
-                        <a><i class="uil uil-trash-alt red-icon"></i> Delete</a>
+                        <button class="custumer_btn"><i class="uil uil-trash-alt red-icon"
+                                (click)="supprimerFoyer(item.idFoyer)"></i> Delete</button>
+                        <button class="custumer_btn" (click)="voirDetails(item.idFoyer)"><i
+                                class="uil uil-info-circle red-icon"></i>datails</button>
+
                     </td>
 
                 </tr>

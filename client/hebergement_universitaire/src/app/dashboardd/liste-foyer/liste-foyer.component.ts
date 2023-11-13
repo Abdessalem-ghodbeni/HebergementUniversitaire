@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Foyer } from 'src/app/Models/foyer';
 
 import { FoyerService } from 'src/app/Services/foyer.service';
@@ -10,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class ListeFoyerComponent implements OnInit {
   ListeFoyer: Foyer[] = [];
-  constructor(private _foyer_service: FoyerService) {}
+  constructor(private _foyer_service: FoyerService, private _router: Router) {}
   ngOnInit(): void {
     if (this.GetAllFoyer() == null) {
       Swal.fire({
@@ -56,5 +57,12 @@ export class ListeFoyerComponent implements OnInit {
     return this._foyer_service.getById(2).subscribe((data) => {
       console.log('data');
     });
+  }
+
+  voirDetails(idFoyer: number) {
+    this._router.navigate(['/dashboard/details/foyer/', idFoyer]);
+  }
+  updateFoyer(idFoyer: number) {
+    this._router.navigate(['/dashboard/edit/foyer/', idFoyer]);
   }
 }
