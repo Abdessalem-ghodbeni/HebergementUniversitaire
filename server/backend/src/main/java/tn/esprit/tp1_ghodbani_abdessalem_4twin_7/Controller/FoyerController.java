@@ -10,11 +10,15 @@ import tn.esprit.tp1_ghodbani_abdessalem_4twin_7.enities.Foyer;
 import tn.esprit.tp1_ghodbani_abdessalem_4twin_7.enities.Universite;
 import tn.esprit.tp1_ghodbani_abdessalem_4twin_7.services.FoyerServiceImpl;
 
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/logement")
+@CrossOrigin(origins = "*")
 public class FoyerController {
     private final FoyerServiceImpl foyerService;
 
@@ -52,12 +56,15 @@ public class FoyerController {
     }
 
     @DeleteMapping(path = "/supprimer/foyer/{id}")
-    public ResponseEntity<String> SupprimerFoyer(@PathVariable("id") long foyerId) {
+    public ResponseEntity<Map<String, String>> SupprimerFoyer(@PathVariable("id") long foyerId) {
         try {
             foyerService.removeFoyer(foyerId);
-            return ResponseEntity.ok("Foyer deleted Successfuly");
+//            return ResponseEntity.ok("Foyer deleted Successfuly");
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "Foyer deleted Successfully");
+            return ResponseEntity.ok(response);
         } catch (RessourceNotFound e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("ce foyer est introuvable avec id " + foyerId);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonMap("error", "Ce foyer est introuvable avec l'id " + foyerId));
         }
 
 
